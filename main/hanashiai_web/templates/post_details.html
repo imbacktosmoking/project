@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+<style>
+
+    body{
+        background-color: rgb(87, 150, 202);
+    }
+</style> <title> 「話し合い、他の人と話す場所です！」 </title>
+
+<a href="{% url 'homepage'%}"> Return to homepage /</a>
+
+<h1> {{post.title}} </h1> 
+
+<h1>  Author - {{post.author}}</h1> 
+
+<h1> {{post.body}} </h1>
+
+<hr>
+
+<h1> Comments </h1>
+
+{% if not post.comments.all %}
+no comments
+{%else%}
+{%for comment in post.comments.all%}
+
+<li><h1>{{comment.title }}<h1>
+
+    <h1> {{comment.author}} Replied </h1>
+
+<h1>{{ comment.date }}</h1>
+
+<h1> {{ comment.body }}</li></h1>
+<hr>
+
+{%endfor%}
+{%endif%}
+
+
+<a href="{% url 'post_comments' %}"> Post a comment </a>
+
+
+
+</body>
+</html>
+
